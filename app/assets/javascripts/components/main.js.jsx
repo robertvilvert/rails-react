@@ -4,6 +4,7 @@ class Main extends React.Component {
             <div>
                 <Header />
                 <h1>Hello From React Rails</h1>
+                <ListPeople />
             </div>
         )
     }
