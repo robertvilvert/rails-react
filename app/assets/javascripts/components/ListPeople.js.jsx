@@ -6,19 +6,35 @@ class ListPeople extends React.Component {
         }
     }
 
-    componentDidMount() {
-        $.get('/api/people.json', function(data) {
-            console.log(data)
-        })
-    }
+	 componentDidMount() {
+	 	var self = this
+	 	$.get('/api/people.json', function(data) {
+	 		self.setState({
+	 			people: data
+	 		})
+	 	})
+	 }
 
     render() {
+		let self = this
+        let people = this.props.people.map(function(item)  { 
+			return(
+				<div>
+					<h4>{ item.name }</h4>
+                    <p> { item.age }</p>
+                </div>
+            )
+        });
         return(
-            <div></div>
+            <div>
+                <h1>({people})</h1>
+            </div>
 
         )
     }
 
 
-}    
+ }    
+
+
         
