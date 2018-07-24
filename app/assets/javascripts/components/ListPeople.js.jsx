@@ -1,39 +1,22 @@
 class ListPeople extends React.Component {
-
-    getInitialState() {
-        return {
-            people: []
-        }
-    }
-
-	 componentDidMount() {
-	 	var self = this
-	 	$.get('/api/people.json', function(data) {
-	 		self.setState({
-	 			people: data
-	 		})
-	 	})
-	 }
-
     render() {
-		let self = this
-        let people = this.props.people.map(function(item)  { 
-			return(
-				<div>
-					<h4>{ item.name }</h4>
-                    <p> { item.age }</p>
-                </div>
-            )
-        });
+        const { people } = this.props;
+
         return(
             <div>
-                <h1>({people})</h1>
+                <div>
+                    {people.map((person, index) => {
+                        return (
+                            <div key={index}>
+                                <h4>{ person.name }</h4>
+                                <p> { person.age }</p>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
-
         )
     }
-
-
  }    
 
 
